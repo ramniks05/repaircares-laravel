@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>@yield('title', ($site['site_name'] ?? 'Home Services').' | '.($site['region_label'] ?? 'Delhi NCR'))</title>
     <meta name="description" content="@yield('meta_description', $site['site_tagline'] ?? 'Expert home appliance repair in Delhi NCR')">
     @stack('head')
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=17">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=20">
     <link rel="icon" href="{{ asset($site['logo_path'] ?? 'assets/images/logo.jpg') }}" type="image/jpeg">
 </head>
 @php
@@ -43,21 +43,32 @@
                     </div>
                 @endunless
             </a>
-            <div class="nav-right-tools">
+            <div class="nav-right-tools nav-desktop-only">
                 <a href="{{ route('home') }}#featured" class="location-combobox nav-amc-link nav-services-link">
                     <i class="fa-solid fa-list"></i> Services
                 </a>
                 <a href="{{ route('home') }}#amc-plans-section" class="location-combobox nav-amc-link">
                     <i class="fa-solid fa-shield-halved"></i> AMC Plans
                 </a>
-                <a href="tel:{{ preg_replace('/\s+/', '', $site['helpline'] ?? '') }}" class="location-combobox nav-call-link">
+                <a href="tel:{{ preg_replace('/\s+/', '', $site['helpline'] ?? '') }}" class="location-combobox nav-call-link" aria-label="Call helpline">
                     <i class="fa-solid fa-phone"></i> <span class="nav-call-text">{{ $site['helpline'] ?? 'Call' }}</span>
                 </a>
-                <div class="location-combobox" role="button" tabindex="0" onclick="document.getElementById('location-modal').classList.add('open')">
+                <div class="location-combobox nav-location-pill" role="button" tabindex="0" aria-label="Change city" onclick="document.getElementById('location-modal').classList.add('open')">
                     <i class="fa-solid fa-map-pin"></i>
-                    <span id="selected-city-label">{{ $site['region_label'] ?? 'Delhi NCR' }}</span>
+                    <span id="selected-city-label" class="nav-location-label">{{ $site['region_label'] ?? 'Delhi NCR' }}</span>
                 </div>
-                <button type="button" class="btn-login js-open-booking"><i class="fa-brands fa-whatsapp"></i> Book</button>
+                <button type="button" class="btn-login js-open-booking"><i class="fa-brands fa-whatsapp"></i><span class="nav-book-label"> Book</span></button>
+            </div>
+            <div class="nav-mobile-actions" aria-label="Quick actions">
+                <a href="tel:{{ preg_replace('/\s+/', '', $site['helpline'] ?? '') }}" class="nav-mobile-icon-btn" aria-label="Call">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <button type="button" class="nav-mobile-icon-btn" aria-label="Change city" onclick="document.getElementById('location-modal').classList.add('open')">
+                    <i class="fa-solid fa-map-pin"></i>
+                </button>
+                <button type="button" class="btn-login btn-login-mobile js-open-booking">
+                    <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
             </div>
         </div>
     </nav>
@@ -142,7 +153,7 @@
 
             pills.forEach(btn => btn.addEventListener('click', () => applyCity(btn.dataset.cityId, btn.dataset.cityName)));
 
-            if (!localStorage.getItem('city_modal_seen')) {
+            if (!localStorage.getItem('city_modal_seen') && window.matchMedia('(min-width: 992px)').matches) {
                 document.getElementById('location-modal')?.classList.add('open');
                 localStorage.setItem('city_modal_seen', '1');
             }
