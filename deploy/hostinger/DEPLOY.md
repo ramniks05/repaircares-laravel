@@ -1,186 +1,137 @@
-# Deploy RepairCares on Hostinger (live path)
+# Hostinger — go live (digitalcreatorss.com)
 
-**Server path:**  
-`/home/u922228303/domains/digitalcreatorss.com/public_html/repaircares`
-
-**Public URL (subfolder):**  
-`https://digitalcreatorss.com/repaircares`
-
-**Admin:**  
-`https://digitalcreatorss.com/repaircares/admin/login`  
-Default after seed: `admin@techrepair.local` / `password` — change password after go-live.
-
----
-
-## 1. PHP version (hPanel)
-
-1. **Websites** → **digitalcreatorss.com** → **PHP Configuration**
-2. Select **PHP 8.2** or **8.3**
-3. Enable extensions: `openssl`, `mbstring`, `fileinfo`, `pdo_mysql`, `curl`, `zip`
-
----
-
-## 2. MySQL database
-
-1. hPanel → **Databases** → **MySQL Databases**
-2. Create database + user (note host, name, user, password)
-3. Assign user to database with **All privileges**
-
----
-
-## 3. Upload the project
-
-### Option A — Git (recommended)
-
-SSH into Hostinger (hPanel → **Advanced** → **SSH Access**), then:
+On Hostinger SSH, projects live under:
 
 ```bash
-cd /home/u922228303/domains/digitalcreatorss.com/public_html/repaircares
+cd ~/domains/digitalcreatorss.com/<folder>
+```
 
-# First time only (empty folder):
+| Project      | Folder        | Example URL                                      |
+|-------------|---------------|--------------------------------------------------|
+| RepairCares | `repaircares` | https://digitalcreatorss.com/repaircares         |
+| Other site  | `jagdamba`    | https://digitalcreatorss.com/jagdamba *(example)* |
+
+Replace `<folder>` with your project directory name (same idea as `jagdamba`).
+
+---
+
+## RepairCares — copy/paste (SSH)
+
+**First-time deploy:**
+
+```bash
+cd ~/domains/digitalcreatorss.com/repaircares
+
 git clone https://github.com/ramniks05/repaircares-laravel.git .
 
-# Updates later:
-git pull origin main
-```
-
-### Option B — File Manager / FTP
-
-Upload the whole Laravel project **into** `public_html/repaircares/` so you have:
-
-```
-repaircares/
-  app/
-  bootstrap/
-  config/
-  public/
-  routes/
-  vendor/          ← run composer on server, or upload vendor from local
-  .htaccess        ← routes traffic into public/
-  ...
-```
-
-Do **not** put `.env` in Git; create it on the server (step 4).
-
----
-
-## 4. Environment file
-
-On the server:
-
-```bash
-cd /home/u922228303/domains/digitalcreatorss.com/public_html/repaircares
 cp .env.hostinger.example .env
-nano .env   # or edit in File Manager
-```
+nano .env
 
-Set:
-
-- `APP_URL=https://digitalcreatorss.com/repaircares`
-- MySQL `DB_*` values from hPanel
-- `APP_DEBUG=false` on production
-
-Generate key:
-
-```bash
 php artisan key:generate
-```
-
----
-
-## 5. Install dependencies & Laravel setup
-
-```bash
-cd /home/u922228303/domains/digitalcreatorss.com/public_html/repaircares
-
 composer install --no-dev --optimize-autoloader
-
 php artisan migrate --force
 php artisan db:seed --class=CmsSeeder --force
-
 php artisan storage:link
-
 chmod -R ug+rwx storage bootstrap/cache
-```
-
-If `composer` is not in PATH:
-
-```bash
-/usr/local/bin/composer install --no-dev --optimize-autoloader
-```
-
-Or install dependencies locally and upload the `vendor/` folder.
-
----
-
-## 6. Optimize for production
-
-```bash
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 ```
 
-After changing `.env`, run:
+**Updates after code changes:**
 
 ```bash
-php artisan config:clear
-php artisan cache:clear
+cd ~/domains/digitalcreatorss.com/repaircares
+
+git pull origin main
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
 php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 ```
 
+**Or one script (after `.env` exists):**
+
+```bash
+cd ~/domains/digitalcreatorss.com/repaircares
+bash deploy/hostinger/post-deploy.sh
+```
+
+**Admin:** https://digitalcreatorss.com/repaircares/admin/login  
+(After seed: `admin@techrepair.local` / `password` — change on production.)
+
 ---
 
-## 7. Subfolder URL fixes (if you see 404 on links or CSS)
+## `.env` (RepairCares)
 
-1. Root `.htaccess` already uses `RewriteBase /repaircares/`.
-2. If assets still fail, edit `public/.htaccess` and **uncomment**:
-   ```apache
-   RewriteBase /repaircares/public/
-   ```
-3. Confirm `APP_URL` in `.env` matches exactly (no trailing slash).
+```env
+APP_URL=https://digitalcreatorss.com/repaircares
+APP_DEBUG=false
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_DATABASE=your_db_name
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_db_password
+SESSION_PATH=/repaircares
+```
+
+Create MySQL in hPanel → **Databases**, then paste credentials into `.env`.
 
 ---
 
-## 8. Better URL (optional): subdomain
+## PHP (hPanel)
 
-In hPanel, create **subdomain** `repaircares.digitalcreatorss.com` with document root:
+**Websites** → **digitalcreatorss.com** → **PHP 8.2+**  
+Extensions: `openssl`, `mbstring`, `fileinfo`, `pdo_mysql`, `curl`, `zip`
 
-`/home/u922228303/domains/digitalcreatorss.com/public_html/repaircares/public`
+---
 
-Then set:
+## Another Laravel project (same server pattern)
+
+Use the same steps; only change folder name, git repo, and `APP_URL`:
+
+```bash
+cd ~/domains/digitalcreatorss.com/jagdamba
+
+git clone https://github.com/YOUR_USER/YOUR_REPO.git .
+
+cp .env.example .env
+nano .env
+# APP_URL=https://digitalcreatorss.com/jagdamba
+# SESSION_PATH=/jagdamba
+
+php artisan key:generate
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan storage:link
+chmod -R ug+rwx storage bootstrap/cache
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+Edit root `.htaccess` `RewriteBase` to match the folder (e.g. `/jagdamba/` for that project).
+
+---
+
+## If CSS or links 404 (subfolder)
+
+In `public/.htaccess`, uncomment:
+
+```apache
+RewriteBase /repaircares/public/
+```
+
+(`/jagdamba/public/` for the jagdamba folder, etc.)
+
+---
+
+## Optional: subdomain (no subfolder in URL)
+
+Point document root to `~/domains/digitalcreatorss.com/repaircares/public` and set:
 
 ```env
 APP_URL=https://repaircares.digitalcreatorss.com
 SESSION_PATH=/
 ```
-
-Remove or simplify root `.htaccess` `RewriteBase` (document root is already `public/`).
-
----
-
-## 9. Quick checklist
-
-| Step | Done |
-|------|------|
-| PHP 8.2+ & extensions | ☐ |
-| MySQL created & `.env` updated | ☐ |
-| `composer install --no-dev` | ☐ |
-| `php artisan key:generate` | ☐ |
-| `migrate` + `db:seed` | ☐ |
-| `storage:link` + folder permissions | ☐ |
-| `APP_DEBUG=false` | ☐ |
-| Site opens at `/repaircares` | ☐ |
-| Admin login works | ☐ |
-
----
-
-## 10. One-shot script (SSH)
-
-From project root on server:
-
-```bash
-bash deploy/hostinger/post-deploy.sh
-```
-
-Edit `APP_PATH` inside the script if your path differs.

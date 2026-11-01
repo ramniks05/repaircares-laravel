@@ -1,4 +1,4 @@
-# Live: public_html/repaircares → forward requests to Laravel public/
+# Live: ~/domains/digitalcreatorss.com/repaircares → forward to public/
 <IfModule mod_rewrite.c>
     Options +FollowSymLinks
     RewriteEngine On

@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
+# RepairCares on Hostinger — run from project root after .env is configured.
 set -euo pipefail
 
-APP_PATH="/home/u922228303/domains/digitalcreatorss.com/public_html/repaircares"
+APP_PATH="${APP_PATH:-$HOME/domains/digitalcreatorss.com/repaircares}"
 PHP="${PHP_BIN:-php}"
 
 cd "$APP_PATH"
 
 if [[ ! -f .env ]]; then
-  echo "Missing .env — copy .env.hostinger.example to .env and configure MySQL first."
+  echo "Missing .env — run: cp .env.hostinger.example .env && nano .env"
   exit 1
 fi
 
 if command -v composer >/dev/null 2>&1; then
   composer install --no-dev --optimize-autoloader --no-interaction
 else
-  echo "Composer not found in PATH; install dependencies manually."
+  echo "Composer not in PATH — run composer install manually."
 fi
 
 $PHP artisan migrate --force
@@ -27,4 +28,4 @@ $PHP artisan config:cache
 $PHP artisan route:cache
 $PHP artisan view:cache
 
-echo "Done. Open: https://digitalcreatorss.com/repaircares"
+echo "Done: https://digitalcreatorss.com/repaircares"
