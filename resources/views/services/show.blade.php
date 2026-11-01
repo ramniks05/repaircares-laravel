@@ -72,7 +72,7 @@
             </div>
             <div class="choice-card">
                 <div class="choice-img-wrapper">
-                    <img src="{{ asset($site['logo_path'] ?? 'assets/images/repair-care-logo.jpg') }}" alt="Repair Cares" class="choice-img choice-img--brand">
+                    <img src="{{ asset($site['logo_path'] ?? 'assets/images/repair-cares-logo.jpg') }}" alt="Repair Cares" class="choice-img choice-img--brand">
                 </div>
                 <div class="choice-title">Installation &amp; Setup</div>
             </div>

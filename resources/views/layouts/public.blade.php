@@ -6,8 +6,8 @@
     <title>@yield('title', ($site['site_name'] ?? 'Home Services').' | '.($site['region_label'] ?? 'Delhi NCR'))</title>
     <meta name="description" content="@yield('meta_description', $site['site_tagline'] ?? 'Expert home appliance repair in Delhi NCR')">
     @stack('head')
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=23">
-    <link rel="icon" href="{{ asset($site['logo_path'] ?? 'assets/images/repair-care-logo.jpg') }}" type="image/jpeg">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=24">
+    <link rel="icon" href="{{ asset($site['logo_path'] ?? 'assets/images/repair-cares-logo.jpg') }}" type="image/jpeg">
 </head>
 @php
     $reopenBookingModal = old('from_modal') || session('open_booking_modal');
@@ -29,12 +29,12 @@
     <nav class="sahil-navbar">
         <div class="container nav-container">
             @php
-                $logoPath = $site['logo_path'] ?? 'assets/images/repair-care-logo.jpg';
+                $logoPath = $site['logo_path'] ?? 'assets/images/repair-cares-logo.jpg';
                 $brandName = $site['site_name'] ?? 'Repair Cares';
+                $logoMarkOnly = str_contains($logoPath, 'repair-care') || str_contains($logoPath, 'repair-cares-logo');
             @endphp
-            <a href="{{ route('home') }}" class="logo-brand" aria-label="{{ $brandName }}">
-                <img src="{{ asset($logoPath) }}" alt="" class="logo-img" width="120" height="46" decoding="async">
-                <span class="logo-wordmark">{{ $brandName }}</span>
+            <a href="{{ route('home') }}" class="logo-brand{{ $logoMarkOnly ? ' logo-brand--mark-only' : '' }}" aria-label="{{ $brandName }}">
+                <img src="{{ asset($logoPath) }}" alt="{{ $brandName }}" class="logo-img" decoding="async">
             </a>
             <div class="nav-right-tools nav-desktop-only">
                 <a href="{{ route('home') }}#featured" class="location-combobox nav-amc-link nav-services-link">

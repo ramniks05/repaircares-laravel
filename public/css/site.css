@@ -59,13 +59,9 @@ img { max-width: 100%; display: block; }
 .nav-desktop-only { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .nav-container { height: 76px; display: flex; align-items: center; justify-content: space-between; }
 .logo-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.logo-img { height: 46px; width: auto; max-width: 52px; border-radius: 6px; object-fit: contain; flex-shrink: 0; }
-.logo-wordmark {
-    font-size: 1.15rem; font-weight: 900; line-height: 1.15; color: #0f172a;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.logo-wordmark--footer { font-size: 1.25rem; color: #fff; }
-.logo-img--footer-mark { height: 52px !important; max-width: 52px; object-fit: contain; }
+.logo-img { height: 46px; width: auto; border-radius: 6px; object-fit: contain; }
+.logo-brand--mark-only .logo-img { height: 58px; max-width: min(280px, 58vw); }
+.logo-img--footer-mark { height: 52px !important; max-width: min(260px, 70vw); width: auto; object-fit: contain; }
 .logo-line1 { font-size: 16px; font-weight: 900; line-height: 1.1; }
 .logo-line2 { font-size: 14px; font-weight: 900; color: var(--secondary); line-height: 1.1; }
 .logo-red { color: var(--primary); font-weight: 900; }
@@ -118,8 +114,13 @@ img { max-width: 100%; display: block; }
         min-width: 0;
         max-width: calc(100% - 148px);
     }
-    .logo-img { height: 40px !important; max-width: 44px !important; }
-    .logo-wordmark { font-size: 1rem; }
+    .logo-brand--mark-only .logo-img {
+        height: 42px !important;
+        max-width: 100% !important;
+        width: auto;
+        object-fit: contain;
+        object-position: left center;
+    }
     .nav-mobile-icon-btn {
         display: inline-flex;
         align-items: center;
@@ -148,8 +149,7 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 380px) {
     .logo-brand { max-width: calc(100% - 132px); }
-    .logo-img { height: 36px !important; max-width: 40px !important; }
-    .logo-wordmark { font-size: 0.92rem; }
+    .logo-brand--mark-only .logo-img { height: 38px !important; }
     .nav-mobile-icon-btn { width: 36px; height: 36px; }
     .btn-login-mobile { padding: 0 10px; height: 36px; font-size: 12px; }
 }

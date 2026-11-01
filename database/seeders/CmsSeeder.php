@@ -37,7 +37,7 @@ class CmsSeeder extends Seeder
             'brand_red' => 'Repair',
             'brand_black' => 'Care',
             'brand_line2' => 'Cares.com',
-            'logo_path' => 'assets/images/repair-care-logo.jpg',
+            'logo_path' => 'assets/images/repair-cares-logo.jpg',
             'hero_banner' => 'assets/images/repaircares-hero-ac.jpg',
             'region_label' => 'Greater Noida West',
             'helpline' => '+91 7210102008',

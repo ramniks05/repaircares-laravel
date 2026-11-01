@@ -33,12 +33,11 @@
                 <div class="footer-brand-block">
                     <div class="footer-brand-meta">
                         @php
-                            $footerLogo = $site['logo_path'] ?? 'assets/images/repair-care-logo.jpg';
+                            $footerLogo = $site['logo_path'] ?? 'assets/images/repair-cares-logo.jpg';
                             $brandName = $site['site_name'] ?? 'Repair Cares';
                         @endphp
                         <div class="footer-brand-row">
-                            <img src="{{ asset($footerLogo) }}" alt="" class="logo-img logo-img--footer-mark" width="120" height="52" decoding="async">
-                            <span class="logo-wordmark logo-wordmark--footer">{{ $brandName }}</span>
+                            <img src="{{ asset($footerLogo) }}" alt="{{ $brandName }}" class="logo-img logo-img--footer-mark" decoding="async">
                         </div>
                         <p class="footer-about">{{ $site['footer_about'] }}</p>
                         <div class="footer-cities">
