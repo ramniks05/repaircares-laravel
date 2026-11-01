@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\Service;
 use App\Support\SiteSettings;
 use App\Support\WhatsAppLink;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +19,16 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (! $this->app->runningInConsole()) {
+            $root = rtrim((string) config('app.url'), '/');
+            if ($root !== '' && ! str_contains($root, 'localhost') && ! str_contains($root, '127.0.0.1')) {
+                URL::forceRootUrl($root);
+                if (str_starts_with($root, 'https://')) {
+                    URL::forceScheme('https');
+                }
+            }
+        }
+
         View::composer('layouts.public', function ($view) {
             $view->with('site', SiteSettings::all());
             if (! array_key_exists('cities', $view->getData())) {

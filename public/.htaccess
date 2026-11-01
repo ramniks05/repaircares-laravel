@@ -4,6 +4,8 @@
     </IfModule>
 
     RewriteEngine On
+    # Subfolder install (digitalcreatorss.com/repaircares): uncomment next line if routes/assets 404.
+    # RewriteBase /repaircares/public/
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
