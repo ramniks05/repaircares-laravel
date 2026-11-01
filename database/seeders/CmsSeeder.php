@@ -38,7 +38,7 @@ class CmsSeeder extends Seeder
             'brand_black' => 'Care',
             'brand_line2' => 'Cares.com',
             'logo_path' => 'assets/images/repair-care-logo.jpg',
-            'hero_banner' => 'assets/images/hero_banner1.png',
+            'hero_banner' => 'assets/images/repaircares-hero-ac.jpg',
             'region_label' => 'Greater Noida West',
             'helpline' => '+91 7210102008',
             'whatsapp' => '917210102008',
@@ -99,26 +99,26 @@ class CmsSeeder extends Seeder
         $interior = ServiceCategory::where('slug', 'interior-decor')->first();
 
         $services = [
-            ['AC Repair', 'ac-repair', $appliance->id, 374, 299, 4.8, 'assets/images/ac_repair.jpg', 'assets/images/cat_ac.jpg'],
-            ['Gas Stove', 'gas-stove', $home->id, 249, 199, 4.9, 'assets/images/banner_gas_hob.png', 'assets/images/148509.png'],
-            ['Refrigerator', 'refrigerator', $appliance->id, 311, 249, 4.8, 'assets/images/refrigerator.png', 'assets/images/148372.png'],
-            ['Washing Machine', 'washing-machine', $appliance->id, 311, 249, 4.8, 'assets/images/washing_machine.jpg', 'assets/images/148373.png'],
-            ['Geyser Repair', 'geyser-repair', $appliance->id, 311, 249, 4.9, 'assets/images/geysers.png', 'assets/images/148374.png'],
-            ['Kitchen Chimney', 'kitchen-chimney', $home->id, 499, 399, 4.8, 'assets/images/chi.png', 'assets/images/cat_chimney.jpg'],
-            ['Dishwasher', 'dishwasher', $appliance->id, 374, 299, 4.7, 'assets/images/dishwasher.jpg', 'assets/images/148381.png'],
-            ['Cook Range', 'cook-range', $home->id, 436, 349, 4.8, 'assets/images/cook_range.jpg', 'assets/images/148382.png'],
-            ['RO Water Purifier', 'ro-water-purifier', $home->id, 249, 199, 4.9, 'assets/images/ro.png', 'assets/images/148383.png'],
-            ['Microwave Oven', 'microwave-oven', $appliance->id, 311, 249, 4.8, 'assets/images/microwave.jpg', 'assets/images/148395.png'],
-            ['LED TV Repair', 'led-tv-repair', $appliance->id, 374, 299, 4.8, 'assets/images/led_tv.jpg', 'assets/images/148414.png'],
-            ['Sofa Wash & Repair', 'sofa-wash-repair', $interior->id, 624, 499, 4.9, 'assets/images/sofa_wash.jpg', 'assets/images/148431.png'],
-            ['Wall Louver Panel', 'wall-louver-panel', $interior->id, 186, 149, 4.9, 'assets/images/wal.png', 'assets/images/148484.png'],
-            ['Customized Wallpaper', 'customized-wallpaper', $interior->id, 44, 35, 4.9, 'assets/images/banner_wooden_wor.png', 'assets/images/148485.png'],
-            ['Aluminium & Glass', 'aluminium-glass', $interior->id, 225, 180, 4.8, 'assets/images/aluminium_glass.jpg', 'assets/images/cat_aluminium_glass.jpg'],
-            ['Electrician', 'electrician', $home->id, 124, 99, 4.9, 'assets/images/cat_electrician.png', 'assets/images/cat_electrician.png'],
-            ['Carpenter', 'carpenter', $home->id, 186, 149, 4.8, 'assets/images/carpenter.jpg', 'assets/images/148503.png'],
-            ['Plumber', 'plumber', $home->id, 186, 149, 4.9, 'assets/images/cat_plumbe.png', 'assets/images/cat_plumbe.png'],
-            ['Interior Designer', 'interior-designer', $interior->id, 624, 499, 4.9, 'assets/images/interior_designer.jpg', 'assets/images/148504.png'],
-            ['Painter', 'painter', $interior->id, 15, 12, 4.9, 'assets/images/painter.jpg', 'assets/images/148502.png'],
+            ['AC Repair', 'ac-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-ac.jpg', 'assets/images/repaircares-listing-ac.jpg'],
+            ['Gas Stove', 'gas-stove', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-gas-stove.jpg', 'assets/images/repaircares-listing-gas-stove.jpg'],
+            ['Refrigerator', 'refrigerator', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-refrigerator.jpg', 'assets/images/repaircares-listing-refrigerator.jpg'],
+            ['Washing Machine', 'washing-machine', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-washing-machine.jpg', 'assets/images/repaircares-listing-washing-machine.jpg'],
+            ['Geyser Repair', 'geyser-repair', $appliance->id, 311, 249, 4.9, 'assets/images/repaircares-listing-geyser.jpg', 'assets/images/repaircares-listing-geyser.jpg'],
+            ['Kitchen Chimney', 'kitchen-chimney', $home->id, 499, 399, 4.8, 'assets/images/repaircares-listing-chimney.jpg', 'assets/images/repaircares-listing-chimney.jpg'],
+            ['Dishwasher', 'dishwasher', $appliance->id, 374, 299, 4.7, 'assets/images/repaircares-listing-dishwasher.jpg', 'assets/images/repaircares-listing-dishwasher.jpg'],
+            ['Cook Range', 'cook-range', $home->id, 436, 349, 4.8, 'assets/images/repaircares-listing-cook-range.jpg', 'assets/images/repaircares-listing-cook-range.jpg'],
+            ['RO Water Purifier', 'ro-water-purifier', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-ro.jpg', 'assets/images/repaircares-listing-ro.jpg'],
+            ['Microwave Oven', 'microwave-oven', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-microwave.jpg', 'assets/images/repaircares-listing-microwave.jpg'],
+            ['LED TV Repair', 'led-tv-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-led-tv.jpg', 'assets/images/repaircares-listing-led-tv.jpg'],
+            ['Sofa Wash & Repair', 'sofa-wash-repair', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-sofa.jpg', 'assets/images/repaircares-listing-sofa.jpg'],
+            ['Wall Louver Panel', 'wall-louver-panel', $interior->id, 186, 149, 4.9, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/repaircares-listing-louver.jpg'],
+            ['Customized Wallpaper', 'customized-wallpaper', $interior->id, 44, 35, 4.9, 'assets/images/repaircares-listing-wallpaper.jpg', 'assets/images/repaircares-listing-wallpaper.jpg'],
+            ['Aluminium & Glass', 'aluminium-glass', $interior->id, 225, 180, 4.8, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/repaircares-listing-louver.jpg'],
+            ['Electrician', 'electrician', $home->id, 124, 99, 4.9, 'assets/images/repaircares-listing-electrician.jpg', 'assets/images/repaircares-listing-electrician.jpg'],
+            ['Carpenter', 'carpenter', $home->id, 186, 149, 4.8, 'assets/images/repaircares-listing-carpenter.jpg', 'assets/images/repaircares-listing-carpenter.jpg'],
+            ['Plumber', 'plumber', $home->id, 186, 149, 4.9, 'assets/images/repaircares-listing-plumber.jpg', 'assets/images/repaircares-listing-plumber.jpg'],
+            ['Interior Designer', 'interior-designer', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-interior.jpg', 'assets/images/repaircares-listing-interior.jpg'],
+            ['Painter', 'painter', $interior->id, 15, 12, 4.9, 'assets/images/repaircares-listing-painter.jpg', 'assets/images/repaircares-listing-painter.jpg'],
         ];
 
         foreach ($services as $i => [$name, $slug, $catId, $orig, $sale, $rating, $image, $listingImage]) {
@@ -148,13 +148,14 @@ class CmsSeeder extends Seeder
         }
 
         $gallery = [
-            ['High-Pressure Foam Jet AC Washing', 'Jet Wash', 'assets/images/img_1791318841_1907.png'],
-            ['Sofa Cleaning Service', 'Sofa Service', 'assets/images/img_1791320117_4548.png'],
-            ['Double Door Fridge Gas Refilling', 'Gas Charging', 'assets/images/img_1791318774_5011.png'],
-            ['Front Load Drum & Bearing Repair', 'Drum Repair', 'assets/images/washing_machine.jpg'],
-            ['RO Service Kit & Filter Change', 'Filter Swap', 'assets/images/ro.png'],
-            ['Smart TV Wall Bracket Mounting', 'Wall Mount', 'assets/images/led_tv.jpg'],
-            ['WPC Louver Panel Accent Wall', 'WPC Louver', 'assets/images/wal.png'],
+            ['High-Pressure Foam Jet AC Washing', 'Jet Wash', 'assets/images/repaircares-hero-ac.jpg'],
+            ['Double Door Fridge Gas Refilling', 'Gas Charging', 'assets/images/repaircares-gallery-fridge.jpg'],
+            ['Front Load Washing Machine Repair', 'Drum Service', 'assets/images/repaircares-gallery-washer.jpg'],
+            ['Sofa Cleaning Service', 'Sofa Service', 'assets/images/repaircares-listing-sofa.jpg'],
+            ['Front Load Drum & Bearing Repair', 'Drum Repair', 'assets/images/repaircares-listing-washing-machine.jpg'],
+            ['RO Service Kit & Filter Change', 'Filter Swap', 'assets/images/repaircares-listing-ro.jpg'],
+            ['Smart TV Wall Bracket Mounting', 'Wall Mount', 'assets/images/repaircares-listing-led-tv.jpg'],
+            ['WPC Louver Panel Accent Wall', 'WPC Louver', 'assets/images/repaircares-listing-louver.jpg'],
         ];
 
         foreach ($gallery as $i => [$title, $subtitle, $image]) {
@@ -225,27 +226,25 @@ class CmsSeeder extends Seeder
         ];
 
         $heroBanners = [
-            ['assets/images/hero_banner1.png', 'Doorstep home repair — Delhi NCR'],
-            ['assets/images/ac_repair.jpg', 'AC repair and jet wash service'],
-            ['assets/images/refrigerator.png', 'Refrigerator repair and gas refilling'],
-            ['assets/images/washing_machine.jpg', 'Washing machine repair service'],
-            ['assets/images/ro.png', 'RO water purifier service'],
-            ['assets/images/geysers.png', 'Geyser repair and installation'],
-            ['assets/images/banner_gas_hob.png', 'Gas stove and hob repair'],
-            ['assets/images/chi.png', 'Chimney cleaning and repair'],
-            ['assets/images/led_tv.jpg', 'LED TV repair and wall mount'],
-            ['assets/images/sofa_wash.jpg', 'Sofa wash and deep cleaning'],
-            ['assets/images/banner_wooden_wor.png', 'Custom wallpaper and wood work'],
-            ['assets/images/img_1791318841_1907.png', 'High-pressure AC foam jet wash'],
+            ['assets/images/repaircares-hero-ac.jpg', 'Repair Cares — AC repair Greater Noida West'],
+            ['assets/images/repaircares-listing-refrigerator.jpg', 'Refrigerator repair and gas refilling'],
+            ['assets/images/repaircares-listing-washing-machine.jpg', 'Washing machine repair service'],
+            ['assets/images/repaircares-listing-ro.jpg', 'RO water purifier service'],
+            ['assets/images/repaircares-listing-geyser.jpg', 'Geyser repair and installation'],
+            ['assets/images/repaircares-listing-gas-stove.jpg', 'Gas stove and hob repair'],
+            ['assets/images/repaircares-listing-chimney.jpg', 'Chimney cleaning and repair'],
+            ['assets/images/repaircares-listing-led-tv.jpg', 'LED TV repair and wall mount'],
+            ['assets/images/repaircares-listing-sofa.jpg', 'Sofa wash and deep cleaning'],
+            ['assets/images/repaircares-listing-wallpaper.jpg', 'Custom wallpaper installation'],
         ];
 
         foreach ($heroBanners as $i => [$image, $alt]) {
             HeroSlide::query()->updateOrCreate(
-                ['image' => $image],
+                ['sort_order' => $i],
                 [
+                    'image' => $image,
                     'alt_text' => $alt,
                     'is_active' => true,
-                    'sort_order' => $i,
                 ]
             );
         }
