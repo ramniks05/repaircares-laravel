@@ -46,10 +46,14 @@ cd ~/domains/digitalcreatorss.com/repaircares
 git pull origin main
 composer install --no-dev --optimize-autoloader
 php artisan migrate --force
+php artisan db:seed --class=RepairCaresBrandImagesSeeder --force
+php artisan view:clear
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 ```
+
+**Our Services images:** listing/card images live under `public/assets/images/` (e.g. `cat_ac.jpg`, `148372.png`, `repaircares-subject-*.jpg`). If cards are blank on live after `git pull`, those files were missing from the repo — pull again after the latest commit that adds them, then re-run the brand images seeder above.
 
 **Or one script (after `.env` exists):**
 
@@ -127,11 +131,42 @@ RewriteBase /repaircares/public/
 
 ---
 
-## Optional: subdomain (no subfolder in URL)
+## Subdomain: repaircares.digitalcreatorss.com (fix 500 errors)
 
-Point document root to `~/domains/digitalcreatorss.com/repaircares/public` and set:
+**1. Document root in hPanel**
+
+**Domains** → **Subdomains** → `repaircares` → set folder to Laravel **`public`**:
+
+```text
+domains/digitalcreatorss.com/public_html/repaircares/public
+```
+
+(not the project root without `/public` — that often causes **500**)
+
+**2. `.env` for subdomain** (copy from `.env.hostinger.subdomain.example`):
 
 ```env
 APP_URL=https://repaircares.digitalcreatorss.com
 SESSION_PATH=/
+DB_PASSWORD="your_password_with_quotes_if_@_special_chars"
 ```
+
+**3. SSH fix + clear cache**
+
+```bash
+cd ~/domains/digitalcreatorss.com/public_html/repaircares
+php artisan config:clear
+php artisan cache:clear
+chmod -R ug+rwx storage bootstrap/cache
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan config:cache
+```
+
+**4. See the real error**
+
+```bash
+tail -80 storage/logs/laravel.log
+```
+
+Temporarily `APP_DEBUG=true` in `.env`, then `php artisan config:clear` — **turn off after fixing**.

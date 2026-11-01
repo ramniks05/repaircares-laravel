@@ -1,4 +1,4 @@
-/* Design system aligned with OneClickAllSolution reference */
+/* RepairCares public site design system */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
@@ -58,10 +58,14 @@ img { max-width: 100%; display: block; }
 .nav-mobile-actions { display: none; }
 .nav-desktop-only { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .nav-container { height: 76px; display: flex; align-items: center; justify-content: space-between; }
-.logo-brand { display: flex; align-items: center; gap: 10px; }
-.logo-img { height: 46px; width: auto; border-radius: 6px; object-fit: contain; }
-.logo-brand--mark-only .logo-img { height: 58px; max-width: min(280px, 58vw); }
-.logo-img--footer-mark { height: 52px !important; max-width: 240px; object-fit: contain; }
+.logo-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.logo-img { height: 46px; width: auto; max-width: 52px; border-radius: 6px; object-fit: contain; flex-shrink: 0; }
+.logo-wordmark {
+    font-size: 1.15rem; font-weight: 900; line-height: 1.15; color: #0f172a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.logo-wordmark--footer { font-size: 1.25rem; color: #fff; }
+.logo-img--footer-mark { height: 52px !important; max-width: 52px; object-fit: contain; }
 .logo-line1 { font-size: 16px; font-weight: 900; line-height: 1.1; }
 .logo-line2 { font-size: 14px; font-weight: 900; color: var(--secondary); line-height: 1.1; }
 .logo-red { color: var(--primary); font-weight: 900; }
@@ -114,13 +118,8 @@ img { max-width: 100%; display: block; }
         min-width: 0;
         max-width: calc(100% - 148px);
     }
-    .logo-brand--mark-only .logo-img {
-        height: 42px !important;
-        max-width: 100% !important;
-        width: auto;
-        object-fit: contain;
-        object-position: left center;
-    }
+    .logo-img { height: 40px !important; max-width: 44px !important; }
+    .logo-wordmark { font-size: 1rem; }
     .nav-mobile-icon-btn {
         display: inline-flex;
         align-items: center;
@@ -149,7 +148,8 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 380px) {
     .logo-brand { max-width: calc(100% - 132px); }
-    .logo-brand--mark-only .logo-img { height: 38px !important; }
+    .logo-img { height: 36px !important; max-width: 40px !important; }
+    .logo-wordmark { font-size: 0.92rem; }
     .nav-mobile-icon-btn { width: 36px; height: 36px; }
     .btn-login-mobile { padding: 0 10px; height: 36px; font-size: 12px; }
 }
@@ -362,7 +362,20 @@ img { max-width: 100%; display: block; }
     overflow: hidden; text-align: center; transition: .2s ease; box-shadow: var(--card-shadow);
 }
 .sahil-cat-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: var(--primary-border); }
-.sahil-cat-card img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #f1f5f9; }
+.sahil-cat-card-media {
+    position: relative; aspect-ratio: 1; overflow: hidden; background: #f1f5f9;
+}
+.sahil-cat-card-media img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
+}
+.sahil-cat-card-media--subject img {
+    object-fit: contain; padding: 8px; background: #fff;
+}
+.sahil-cat-card-placeholder {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 2rem; background: #fff1f2;
+}
 .sahil-cat-card h3 { font-size: 13px; font-weight: 800; padding: 10px 8px 2px; color: var(--secondary); }
 .sahil-cat-card span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); letter-spacing: .06em; padding-bottom: 10px; }
 
@@ -373,8 +386,19 @@ img { max-width: 100%; display: block; }
     box-shadow: var(--card-shadow); transition: .2s ease; display: flex; flex-direction: column;
 }
 .sahil-product-card:hover { box-shadow: var(--hover-shadow); transform: translateY(-2px); }
-.product-img-wrapper { position: relative; aspect-ratio: 16/10; background: #f8fafc; }
-.product-card-img { width: 100%; height: 100%; object-fit: cover; }
+.product-img-wrapper {
+    position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #f1f5f9;
+}
+.product-card-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
+}
+.product-card-img--placeholder {
+    display: grid; place-items: center; font-size: 3rem; background: #fff1f2;
+}
+.product-img-wrapper--subject .product-card-img {
+    object-fit: contain; padding: 10px; background: #fff;
+}
 .product-rating-tag {
     position: absolute; top: 10px; right: 10px; background: #fff; border-radius: 999px;
     padding: 4px 8px; font-size: 11px; font-weight: 800; color: #f59e0b;
@@ -412,7 +436,10 @@ img { max-width: 100%; display: block; }
 /* Gallery */
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 .gallery-card { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--border); }
-.gallery-card img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-card img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
+}
 .gallery-overlay {
     position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,.85), transparent 55%);
     display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; color: #fff;
@@ -777,8 +804,19 @@ a.product-card-link { flex: 1; display: flex; flex-direction: column; }
 .choice-card.active {
     border-color: var(--primary); background: #fff; box-shadow: 0 4px 16px rgba(220,38,38,.12);
 }
-.choice-img-wrapper { aspect-ratio: 16/9; background: #e2e8f0; }
-.choice-img { width: 100%; height: 100%; object-fit: cover; }
+.choice-img-wrapper {
+    position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #f1f5f9;
+}
+.choice-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
+}
+.choice-img--brand {
+    object-fit: contain; padding: 14px; background: #fff; box-sizing: border-box;
+}
+.choice-img-wrapper--subject .choice-img {
+    object-fit: contain; padding: 10px; background: #fff;
+}
 .choice-title {
     padding: 10px 12px; font-size: 12px; font-weight: 800; text-align: center; color: var(--secondary);
 }
@@ -794,15 +832,22 @@ a.product-card-link { flex: 1; display: flex; flex-direction: column; }
 .detail-sidebar .booking-panel { position: sticky; top: 16px; }
 
 .sahil-rate-card {
-    display: flex; flex-wrap: wrap; gap: 0;
+    display: flex; flex-wrap: wrap; gap: 0; align-items: stretch;
     background: #fff; border: 1px solid var(--border); border-radius: 16px;
     overflow: hidden; box-shadow: var(--card-shadow);
 }
+@media (max-width: 640px) {
+    .sahil-rate-card-img-wrapper { flex: 1 1 100%; }
+}
 .highlight-rate-card { border-color: var(--primary-border); }
 .sahil-rate-card-img-wrapper {
-    position: relative; flex: 1 1 220px; min-height: 200px; background: #f1f5f9;
+    position: relative; flex: 1 1 240px; min-width: 0;
+    aspect-ratio: 16 / 10; overflow: hidden; background: #f1f5f9;
 }
-.sahil-rate-card-img { width: 100%; height: 100%; min-height: 200px; object-fit: cover; }
+.sahil-rate-card-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
+}
 .sahil-rate-card-rating {
     position: absolute; top: 12px; right: 12px; background: #fff; border-radius: 999px;
     padding: 6px 10px; font-size: 12px; font-weight: 800; color: #f59e0b;

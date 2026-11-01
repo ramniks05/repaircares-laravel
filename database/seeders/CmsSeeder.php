@@ -32,7 +32,7 @@ class CmsSeeder extends Seeder
         );
 
         $settings = [
-            'site_name' => 'RepairCares',
+            'site_name' => 'Repair Cares',
             'site_tagline' => 'Professional repair service in Greater Noida West — we fix it right, the first time.',
             'brand_red' => 'Repair',
             'brand_black' => 'Care',
@@ -98,27 +98,28 @@ class CmsSeeder extends Seeder
         $home = ServiceCategory::where('slug', 'home-maintenance')->first();
         $interior = ServiceCategory::where('slug', 'interior-decor')->first();
 
+        // image = Repair Cares detail; listing_image = subject / product catalog art
         $services = [
-            ['AC Repair', 'ac-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-ac.jpg', 'assets/images/repaircares-listing-ac.jpg'],
-            ['Gas Stove', 'gas-stove', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-gas-stove.jpg', 'assets/images/repaircares-listing-gas-stove.jpg'],
-            ['Refrigerator', 'refrigerator', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-refrigerator.jpg', 'assets/images/repaircares-listing-refrigerator.jpg'],
-            ['Washing Machine', 'washing-machine', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-washing-machine.jpg', 'assets/images/repaircares-listing-washing-machine.jpg'],
-            ['Geyser Repair', 'geyser-repair', $appliance->id, 311, 249, 4.9, 'assets/images/repaircares-listing-geyser.jpg', 'assets/images/repaircares-listing-geyser.jpg'],
-            ['Kitchen Chimney', 'kitchen-chimney', $home->id, 499, 399, 4.8, 'assets/images/repaircares-listing-chimney.jpg', 'assets/images/repaircares-listing-chimney.jpg'],
-            ['Dishwasher', 'dishwasher', $appliance->id, 374, 299, 4.7, 'assets/images/repaircares-listing-dishwasher.jpg', 'assets/images/repaircares-listing-dishwasher.jpg'],
-            ['Cook Range', 'cook-range', $home->id, 436, 349, 4.8, 'assets/images/repaircares-listing-cook-range.jpg', 'assets/images/repaircares-listing-cook-range.jpg'],
-            ['RO Water Purifier', 'ro-water-purifier', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-ro.jpg', 'assets/images/repaircares-listing-ro.jpg'],
-            ['Microwave Oven', 'microwave-oven', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-microwave.jpg', 'assets/images/repaircares-listing-microwave.jpg'],
-            ['LED TV Repair', 'led-tv-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-led-tv.jpg', 'assets/images/repaircares-listing-led-tv.jpg'],
-            ['Sofa Wash & Repair', 'sofa-wash-repair', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-sofa.jpg', 'assets/images/repaircares-listing-sofa.jpg'],
-            ['Wall Louver Panel', 'wall-louver-panel', $interior->id, 186, 149, 4.9, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/repaircares-listing-louver.jpg'],
-            ['Customized Wallpaper', 'customized-wallpaper', $interior->id, 44, 35, 4.9, 'assets/images/repaircares-listing-wallpaper.jpg', 'assets/images/repaircares-listing-wallpaper.jpg'],
-            ['Aluminium & Glass', 'aluminium-glass', $interior->id, 225, 180, 4.8, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/repaircares-listing-louver.jpg'],
-            ['Electrician', 'electrician', $home->id, 124, 99, 4.9, 'assets/images/repaircares-listing-electrician.jpg', 'assets/images/repaircares-listing-electrician.jpg'],
-            ['Carpenter', 'carpenter', $home->id, 186, 149, 4.8, 'assets/images/repaircares-listing-carpenter.jpg', 'assets/images/repaircares-listing-carpenter.jpg'],
-            ['Plumber', 'plumber', $home->id, 186, 149, 4.9, 'assets/images/repaircares-listing-plumber.jpg', 'assets/images/repaircares-listing-plumber.jpg'],
-            ['Interior Designer', 'interior-designer', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-interior.jpg', 'assets/images/repaircares-listing-interior.jpg'],
-            ['Painter', 'painter', $interior->id, 15, 12, 4.9, 'assets/images/repaircares-listing-painter.jpg', 'assets/images/repaircares-listing-painter.jpg'],
+            ['AC Repair', 'ac-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-ac.jpg', 'assets/images/cat_ac.jpg'],
+            ['Gas Stove', 'gas-stove', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-gas-stove.jpg', 'assets/images/148509.png'],
+            ['Refrigerator', 'refrigerator', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-refrigerator.jpg', 'assets/images/148372.png'],
+            ['Washing Machine', 'washing-machine', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-washing-machine.jpg', 'assets/images/148373.png'],
+            ['Geyser Repair', 'geyser-repair', $appliance->id, 311, 249, 4.9, 'assets/images/repaircares-listing-geyser.jpg', 'assets/images/148374.png'],
+            ['Kitchen Chimney', 'kitchen-chimney', $home->id, 499, 399, 4.8, 'assets/images/repaircares-listing-chimney.jpg', 'assets/images/cat_chimney.jpg'],
+            ['Dishwasher', 'dishwasher', $appliance->id, 374, 299, 4.7, 'assets/images/repaircares-listing-dishwasher.jpg', 'assets/images/148381.png'],
+            ['Cook Range', 'cook-range', $home->id, 436, 349, 4.8, 'assets/images/repaircares-listing-cook-range.jpg', 'assets/images/148382.png'],
+            ['RO Water Purifier', 'ro-water-purifier', $home->id, 249, 199, 4.9, 'assets/images/repaircares-listing-ro.jpg', 'assets/images/148383.png'],
+            ['Microwave Oven', 'microwave-oven', $appliance->id, 311, 249, 4.8, 'assets/images/repaircares-listing-microwave.jpg', 'assets/images/148395.png'],
+            ['LED TV Repair', 'led-tv-repair', $appliance->id, 374, 299, 4.8, 'assets/images/repaircares-listing-led-tv.jpg', 'assets/images/148414.png'],
+            ['Sofa Wash & Repair', 'sofa-wash-repair', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-sofa.jpg', 'assets/images/148431.png'],
+            ['Wall Louver Panel', 'wall-louver-panel', $interior->id, 186, 149, 4.9, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/148484.png'],
+            ['Customized Wallpaper', 'customized-wallpaper', $interior->id, 44, 35, 4.9, 'assets/images/repaircares-listing-wallpaper.jpg', 'assets/images/148485.png'],
+            ['Aluminium & Glass', 'aluminium-glass', $interior->id, 225, 180, 4.8, 'assets/images/repaircares-listing-louver.jpg', 'assets/images/cat_aluminium_glass.jpg'],
+            ['Electrician', 'electrician', $home->id, 124, 99, 4.9, 'assets/images/repaircares-listing-electrician.jpg', 'assets/images/repaircares-subject-electrician.jpg'],
+            ['Carpenter', 'carpenter', $home->id, 186, 149, 4.8, 'assets/images/repaircares-listing-carpenter.jpg', 'assets/images/repaircares-subject-carpenter.jpg'],
+            ['Plumber', 'plumber', $home->id, 186, 149, 4.9, 'assets/images/repaircares-listing-plumber.jpg', 'assets/images/repaircares-subject-plumber.jpg'],
+            ['Interior Designer', 'interior-designer', $interior->id, 624, 499, 4.9, 'assets/images/repaircares-listing-interior.jpg', 'assets/images/repaircares-subject-interior.jpg'],
+            ['Painter', 'painter', $interior->id, 15, 12, 4.9, 'assets/images/repaircares-listing-painter.jpg', 'assets/images/repaircares-subject-painter.jpg'],
         ];
 
         foreach ($services as $i => [$name, $slug, $catId, $orig, $sale, $rating, $image, $listingImage]) {
@@ -248,6 +249,18 @@ class CmsSeeder extends Seeder
                 ]
             );
         }
+
+        HeroSlide::query()
+            ->whereIn('image', [
+                'assets/images/banner_wooden_wor.png',
+                'assets/images/banner_gas_hob.png',
+                'assets/images/hero_banner1.png',
+            ])
+            ->update(['is_active' => false]);
+
+        HeroSlide::query()
+            ->where('sort_order', '>=', count($heroBanners))
+            ->update(['is_active' => false]);
 
         foreach ($pages as [$title, $slug, $section, $content]) {
             Page::query()->updateOrCreate(

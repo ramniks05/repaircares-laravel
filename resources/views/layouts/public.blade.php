@@ -6,8 +6,8 @@
     <title>@yield('title', ($site['site_name'] ?? 'Home Services').' | '.($site['region_label'] ?? 'Delhi NCR'))</title>
     <meta name="description" content="@yield('meta_description', $site['site_tagline'] ?? 'Expert home appliance repair in Delhi NCR')">
     @stack('head')
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=20">
-    <link rel="icon" href="{{ asset($site['logo_path'] ?? 'assets/images/logo.jpg') }}" type="image/jpeg">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=23">
+    <link rel="icon" href="{{ asset($site['logo_path'] ?? 'assets/images/repair-care-logo.jpg') }}" type="image/jpeg">
 </head>
 @php
     $reopenBookingModal = old('from_modal') || session('open_booking_modal');
@@ -29,19 +29,12 @@
     <nav class="sahil-navbar">
         <div class="container nav-container">
             @php
-                $logoPath = $site['logo_path'] ?? 'assets/images/logo.jpg';
-                $logoOnly = str_contains($logoPath, 'repair-care-logo');
+                $logoPath = $site['logo_path'] ?? 'assets/images/repair-care-logo.jpg';
+                $brandName = $site['site_name'] ?? 'Repair Cares';
             @endphp
-            <a href="{{ route('home') }}" class="logo-brand{{ $logoOnly ? ' logo-brand--mark-only' : '' }}">
-                <img src="{{ asset($logoPath) }}" alt="{{ $site['site_name'] ?? 'Home Services' }}" class="logo-img">
-                @unless($logoOnly)
-                    <div class="logo-title">
-                        <div class="logo-line1">
-                            <span class="logo-red">{{ $site['brand_red'] ?? 'One' }}</span><span class="logo-black">{{ $site['brand_black'] ?? 'Click' }}</span>
-                        </div>
-                        <div class="logo-line2">{{ $site['brand_line2'] ?? 'AllSolution' }}</div>
-                    </div>
-                @endunless
+            <a href="{{ route('home') }}" class="logo-brand" aria-label="{{ $brandName }}">
+                <img src="{{ asset($logoPath) }}" alt="" class="logo-img" width="120" height="46" decoding="async">
+                <span class="logo-wordmark">{{ $brandName }}</span>
             </a>
             <div class="nav-right-tools nav-desktop-only">
                 <a href="{{ route('home') }}#featured" class="location-combobox nav-amc-link nav-services-link">

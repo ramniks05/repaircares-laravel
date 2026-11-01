@@ -7,7 +7,7 @@
 @section('content')
 @php
     $region = $site['region_label'] ?? 'Delhi NCR';
-    $heroImage = $service->cardImageUrl() ?? asset('assets/images/hero_banner1.png');
+    $heroImage = $service->cardImageUrl() ?? asset('assets/images/repaircares-hero-ac.jpg');
     $serviceWaUrl = \App\Support\WhatsAppLink::url(\App\Support\WhatsAppLink::chatMessage($service->displayTitle()));
 @endphp
 
@@ -55,7 +55,7 @@
     <div class="container">
         <div class="choice-cards-grid">
             <div class="choice-card active">
-                <div class="choice-img-wrapper">
+                <div class="choice-img-wrapper choice-img-wrapper--subject">
                     @if($service->listingImageUrl())
                         <img src="{{ $service->listingImageUrl() }}" alt="" class="choice-img">
                     @endif
@@ -72,7 +72,7 @@
             </div>
             <div class="choice-card">
                 <div class="choice-img-wrapper">
-                    <img src="{{ asset('assets/images/logo.jpg') }}" alt="" class="choice-img" style="object-fit:contain;padding:8px;">
+                    <img src="{{ asset($site['logo_path'] ?? 'assets/images/repair-care-logo.jpg') }}" alt="Repair Cares" class="choice-img choice-img--brand">
                 </div>
                 <div class="choice-title">Installation &amp; Setup</div>
             </div>
@@ -179,9 +179,11 @@
             @foreach($related as $item)
                 <article class="sahil-product-card">
                     <a href="{{ route('services.show', $item->slug) }}" class="product-card-link">
-                        <div class="product-img-wrapper">
-                            @if($item->cardImageUrl())
-                                <img src="{{ $item->cardImageUrl() }}" alt="{{ $item->displayTitle() }}" class="product-card-img" loading="lazy">
+                        <div class="product-img-wrapper product-img-wrapper--subject">
+                            @if($item->listingImageUrl())
+                                <img src="{{ $item->listingImageUrl() }}" alt="{{ $item->displayTitle() }}" class="product-card-img" loading="lazy">
+                            @else
+                                <span class="product-card-img product-card-img--placeholder" aria-hidden="true">{{ $item->icon ?? '🔧' }}</span>
                             @endif
                             <div class="product-rating-tag"><i class="fa-solid fa-star"></i> {{ number_format($item->rating, 1) }}</div>
                         </div>

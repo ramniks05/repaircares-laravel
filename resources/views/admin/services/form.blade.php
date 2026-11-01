@@ -18,7 +18,7 @@
         <div class="form-row"><label>Short Description</label><textarea name="short_description">{{ old('short_description', $service->short_description) }}</textarea></div>
         <div class="form-row"><label>SEO Meta Description</label><textarea name="meta_description" rows="2">{{ old('meta_description', $service->meta_description) }}</textarea></div>
         <div class="form-row"><label>Service Page Content (HTML allowed)</label><textarea name="detail_content" rows="8">{{ old('detail_content', $service->detail_content) }}</textarea></div>
-        <div class="form-row"><label>Listing image path</label><input name="listing_image" value="{{ old('listing_image', $service->listing_image) }}" placeholder="assets/images/cat_ac.jpg"></div>
+        <div class="form-row"><label>Listing image (subject / product — cards &amp; grids)</label><input name="listing_image" value="{{ old('listing_image', $service->listing_image) }}" placeholder="assets/images/repaircares-subject-electrician.jpg"></div>
         <div class="form-row"><label>Icon (emoji)</label><input name="icon" value="{{ old('icon', $service->icon) }}"></div>
         <div class="form-row"><label>Image</label><input type="file" name="image" accept="image/*">@if($service->image)<p><small>Current: {{ $service->image }}</small></p>@endif</div>
         <div class="form-row"><label>Original Price</label><input type="number" step="0.01" name="price_original" value="{{ old('price_original', $service->price_original) }}" required></div>

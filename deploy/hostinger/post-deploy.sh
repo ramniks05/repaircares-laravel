@@ -20,6 +20,7 @@ fi
 
 $PHP artisan migrate --force
 $PHP artisan db:seed --class=CmsSeeder --force || true
+$PHP artisan db:seed --class=RepairCaresBrandImagesSeeder --force || true
 $PHP artisan storage:link --force 2>/dev/null || $PHP artisan storage:link
 
 chmod -R ug+rwx storage bootstrap/cache 2>/dev/null || true

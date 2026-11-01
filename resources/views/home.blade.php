@@ -25,11 +25,13 @@
         <div class="sahil-services-grid">
             @foreach($services as $service)
                 <a href="{{ route('services.show', $service->slug) }}" class="sahil-cat-card">
-                    @if($service->listingImageUrl())
-                        <img src="{{ $service->listingImageUrl() }}" alt="{{ $service->name }}" loading="lazy">
-                    @else
-                        <div style="aspect-ratio:1;display:grid;place-items:center;font-size:2rem;background:#fff1f2;">{{ $service->icon ?? '🔧' }}</div>
-                    @endif
+                    <div class="sahil-cat-card-media sahil-cat-card-media--subject">
+                        @if($service->listingImageUrl())
+                            <img src="{{ $service->listingImageUrl() }}" alt="{{ $service->name }}" loading="lazy">
+                        @else
+                            <span class="sahil-cat-card-placeholder" aria-hidden="true">{{ $service->icon ?? '🔧' }}</span>
+                        @endif
+                    </div>
                     <h3>{{ $service->displayTitle() }}</h3>
                     <span>SERVICES</span>
                 </a>
@@ -49,11 +51,11 @@
             @foreach($featuredServices as $service)
                 <article class="sahil-product-card">
                     <a href="{{ route('services.show', $service->slug) }}" class="product-card-link">
-                    <div class="product-img-wrapper">
-                        @if($service->cardImageUrl())
-                            <img src="{{ $service->cardImageUrl() }}" alt="{{ $service->name }}" class="product-card-img" loading="lazy">
+                    <div class="product-img-wrapper product-img-wrapper--subject">
+                        @if($service->listingImageUrl())
+                            <img src="{{ $service->listingImageUrl() }}" alt="{{ $service->name }}" class="product-card-img" loading="lazy">
                         @else
-                            <div class="product-card-img" style="display:grid;place-items:center;background:#fff1f2;font-size:3rem;">{{ $service->icon }}</div>
+                            <span class="product-card-img product-card-img--placeholder" aria-hidden="true">{{ $service->icon }}</span>
                         @endif
                         <div class="product-rating-tag"><i class="fa-solid fa-star"></i> {{ number_format($service->rating, 1) }}</div>
                     </div>

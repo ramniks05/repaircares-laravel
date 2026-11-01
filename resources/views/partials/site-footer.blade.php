@@ -33,17 +33,12 @@
                 <div class="footer-brand-block">
                     <div class="footer-brand-meta">
                         @php
-                            $footerLogo = $site['logo_path'] ?? 'assets/images/logo.jpg';
-                            $footerLogoOnly = str_contains($footerLogo, 'repair-care-logo');
+                            $footerLogo = $site['logo_path'] ?? 'assets/images/repair-care-logo.jpg';
+                            $brandName = $site['site_name'] ?? 'Repair Cares';
                         @endphp
                         <div class="footer-brand-row">
-                            <img src="{{ asset($footerLogo) }}" alt="{{ $site['site_name'] ?? '' }}" class="logo-img{{ $footerLogoOnly ? ' logo-img--footer-mark' : '' }}">
-                            @unless($footerLogoOnly)
-                                <div>
-                                    <div class="logo-line1"><span class="logo-red">{{ $site['brand_red'] ?? 'One' }}</span><span class="logo-black">{{ $site['brand_black'] ?? 'Click' }}</span></div>
-                                    <div class="logo-line2">{{ $site['brand_line2'] ?? 'AllSolution' }}</div>
-                                </div>
-                            @endunless
+                            <img src="{{ asset($footerLogo) }}" alt="" class="logo-img logo-img--footer-mark" width="120" height="52" decoding="async">
+                            <span class="logo-wordmark logo-wordmark--footer">{{ $brandName }}</span>
                         </div>
                         <p class="footer-about">{{ $site['footer_about'] }}</p>
                         <div class="footer-cities">
